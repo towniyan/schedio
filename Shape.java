@@ -1,6 +1,7 @@
 public class Shape extends Helper {
 	private int width, height, x = 0, y = 0;
 	private char[][] pixels;
+	private char fill = '*';
 
 	public Shape (int width, int height) {
 		this.width = width;
@@ -43,5 +44,14 @@ public class Shape extends Helper {
 
  	public void setPixel (int y, int x, char c) {
  		this.pixels[y][x] = c;
+ 	}
+
+ 	public char getFill () {
+ 		return this.fill;
+ 	}
+
+ 	public Shape setFill (char c) {
+ 		this.fill = c;
+ 		return this;
  	}
 }

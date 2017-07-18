@@ -14,4 +14,10 @@ public class Rectangle extends Shape {
 
  		return this;
  	}
+
+ 	public Shape setFill (char c) {
+ 		super.setFill(c);
+ 		
+ 		return this;
+ 	}
 }

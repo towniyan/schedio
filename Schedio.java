@@ -3,7 +3,7 @@ import java.util.*;
 public class Schedio extends Helper {
 	private int width, height;
 	private char[][] pixels;
-	private final static char DEFAULTCHAR = '.';
+	private char background = '.';
 
 	public Schedio (int width, int height) {
 		this.width = width;
@@ -13,7 +13,7 @@ public class Schedio extends Helper {
 
 		for (int i = 0; i < height - 1; i++) {
 			for (int j = 0; j < width - 1; j++) {
-				this.pixels[i][j] = this.DEFAULTCHAR;
+				this.pixels[i][j] = 0;
 			}
 		}
 	}
@@ -22,7 +22,9 @@ public class Schedio extends Helper {
 		char[][] pixels = shape.getPixels();
 		for (int i = 0; i < shape.getHeight(); i++) {
 			for (int j = 0; j < shape.getWidth(); j++) {
-				if (pixels[i][j] != 0)
+				if (pixels[i][j] == 1)
+					this.pixels[i + shape.getY()][j + shape.getX()] = shape.getFill();
+				else if (pixels[i][j] != 0)
 					this.pixels[i + shape.getY()][j + shape.getX()] = pixels[i][j];
 			}
 		}
@@ -30,10 +32,16 @@ public class Schedio extends Helper {
 		return this;
  	}
 
+ 	public Schedio setBackground (char c) {
+ 		this.background = c;
+
+ 		return this;
+ 	}
+
 	public void draw () {
 		for (int i = 0; i < height - 1; i++) {
 			for (int j = 0; j < width - 1; j++) {
-				print(this.pixels[i][j]);
+				print(this.pixels[i][j] == 0 ? this.background : this.pixels[i][j]);
 			}
 			println();
 		}

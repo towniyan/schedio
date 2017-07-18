@@ -5,7 +5,7 @@ public class Triangle extends Shape {
 		int offset = height - 1, length = 1;
 		for (int i = 0; i < height; i++) {
 			for (int j = 0; j < length; j++) {
-				super.setPixel (i, j + offset, '*');
+				super.setPixel (i, j + offset, (char) 1);
 			}
 			offset--;
 			length += 2;
@@ -15,6 +15,12 @@ public class Triangle extends Shape {
  	public Triangle setPosition (int x, int y) {
  		super.setPosition(x, y);
 
+ 		return this;
+ 	}
+
+ 	public Shape setFill (char c) {
+ 		super.setFill(c);
+ 		
  		return this;
  	}
 }
