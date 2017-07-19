@@ -1,4 +1,4 @@
-all: Helper.class Schedio.class Test.class
+all: Helper.class Schedio.class Rectangle.class Triangle.class Plus.class Test.class
 
 %.class: %.java
 	javac $<

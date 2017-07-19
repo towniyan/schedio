@@ -9,7 +9,7 @@ public class Schedio extends Helper {
 		this.width = width;
 		this.height = height;
 
-		this.pixels = new char[height - 1][width - 1];
+		this.pixels = new char[height][width];
 
 		for (int i = 0; i < height - 1; i++) {
 			for (int j = 0; j < width - 1; j++) {
@@ -22,10 +22,14 @@ public class Schedio extends Helper {
 		char[][] pixels = shape.getPixels();
 		for (int i = 0; i < shape.getHeight(); i++) {
 			for (int j = 0; j < shape.getWidth(); j++) {
-				if (pixels[i][j] == 1)
-					this.pixels[i + shape.getY()][j + shape.getX()] = shape.getFill();
-				else if (pixels[i][j] != 0)
-					this.pixels[i + shape.getY()][j + shape.getX()] = pixels[i][j];
+				try {
+					if (pixels[i][j] == 1)
+						this.pixels[i + shape.getY()][j + shape.getX()] = shape.getFill();
+					else if (pixels[i][j] != 0)
+						this.pixels[i + shape.getY()][j + shape.getX()] = pixels[i][j];
+				} catch (ArrayIndexOutOfBoundsException e) {
+					
+				}
 			}
 		}
 
